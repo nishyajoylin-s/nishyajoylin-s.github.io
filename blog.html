@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Nishya Joylin Sathianesan</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .post-item {
+            padding: 24px 0;
+            border-bottom: 1px solid #e5ddd5;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .post-item h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #5d4e42;
+            margin-bottom: 8px;
+        }
+
+        .post-item h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .post-item h3 a:hover {
+            opacity: 0.7;
+        }
+
+        .post-excerpt {
+            color: #555;
+            font-size: 0.97rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: #efe9e3;
+            color: #5d4e42;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Inline post content (for posts kept on this page) */
+        .post-full {
+            background: #faf7f4;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .post-full .post-date {
+            margin-bottom: 8px;
+        }
+
+        .post-full h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #5d4e42;
+            margin-bottom: 16px;
+        }
+
+        .post-full p {
+            color: #555;
+            font-size: 0.97rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .post-full p:last-of-type {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nishya Joylin Sathianesan</h1>
+        <p class="tagline">Strategic Leader in Data, Analytics, and Machine Learning</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="education.html">Education</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html" class="active">Blog</a>
+    </nav>
+
+    <main>
+        <div class="page-content">
+            <h2>Blog</h2>
+            <p style="color:#555; margin-bottom:30px; font-size:0.97rem;">
+                Thoughts on data, experimentation, leadership, and building things.
+            </p>
+
+            <!-- ── POST TEMPLATE ──────────────────────────────────────────────────
+                 To add a new post, copy everything between START and END,
+                 paste it at the TOP of the list (newest first), and fill in your content.
+
+            START
+            <div class="post-full">
+                <p class="post-date">April 2026</p>
+                <h3>Your Post Title</h3>
+                <p>
+                    Your first paragraph here.
+                </p>
+                <p>
+                    Another paragraph if needed.
+                </p>
+                <div class="post-tags" style="margin-top:16px;">
+                    <span class="tag">Topic</span>
+                </div>
+            </div>
+            END
+            ── -->
+
+            <!-- Post 1 -->
+            <div class="post-full">
+                <p class="post-date">April 2026</p>
+                <h3>Why most A/B tests fail before the data is collected</h3>
+                <p>
+                    After years of running experiments in product and data roles, the pattern is consistent:
+                    the mistakes that sink an A/B test rarely happen during analysis. They happen weeks earlier —
+                    at the point someone says "let's test it" without asking whether testing is even the right call.
+                </p>
+                <p>
+                    The three questions that matter before running any experiment: Is there a clear, falsifiable hypothesis?
+                    Is the effect size you're hoping to detect realistic given your baseline and traffic?
+                    And — most importantly — is this the kind of question an A/B test can actually answer,
+                    or do you need user research first?
+                </p>
+                <p>
+                    I built a tool around these questions. It routes ideas to the right method before a single
+                    user is assigned to a variant.
+                    <a href="projects.html" style="color:#5d4e42; font-weight:500;">See the project →</a>
+                </p>
+                <div class="post-tags" style="margin-top:16px;">
+                    <span class="tag">Experimentation</span>
+                    <span class="tag">Data</span>
+                    <span class="tag">Product</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="linkedin-section">
+            <a href="https://www.linkedin.com/in/nishyajoylin/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="linkedin-button">
+                View LinkedIn Profile
+            </a>
+        </div>
+        <p class="copyright">&copy; 2026 Nishya Joylin Sathianesan. All rights reserved.</p>
+    </footer>
+</body>
+</html>
