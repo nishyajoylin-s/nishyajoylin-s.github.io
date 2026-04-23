@@ -69,6 +69,13 @@ body {
 .nav-link.active { color: var(--accent); font-weight: 600; letter-spacing: 0.07em; }
 
 /* ── Hero (homepage) ── */
+.hero-greeting {
+  font-size: 15px;
+  color: var(--text-3);
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
 .hero {
   min-height: calc(100vh - 60px);
   display: flex;
@@ -240,6 +247,11 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-bottom: 14px;
+  align-items: stretch;
+}
+
+.skills-grid .card {
+  margin-bottom: 0;
 }
 
 .skill-row {
