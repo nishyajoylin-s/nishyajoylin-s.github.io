@@ -14,11 +14,13 @@ A simple, clean static resume website built with HTML and CSS.
 
 ```
 nishyajoylin-s.github.io/
-├── index.html       # Home page with career summary
+├── index.html       # Home page
 ├── experience.html  # Work experience
 ├── skills.html      # Leadership, business, and technical skills
 ├── education.html   # Education background
-├── styles.css       # Stylesheet
+├── projects.html    # Personal projects
+├── blog.html        # Blog
+├── portfolio.css    # Stylesheet
 └── README.md        # This file
 ```
 
