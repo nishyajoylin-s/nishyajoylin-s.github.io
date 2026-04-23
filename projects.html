@@ -1,206 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Nishya Joylin Sathianesan</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .project-card {
-            background: #faf7f4;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .project-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #5d4e42;
-            margin-bottom: 6px;
-        }
-
-        .project-card .project-desc {
-            color: #555;
-            font-size: 0.97rem;
-            margin-bottom: 14px;
-            line-height: 1.7;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-            background: #efe9e3;
-            color: #5d4e42;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .project-links a {
-            color: #5d4e42;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-bottom: 1px solid #a89080;
-            padding-bottom: 1px;
-            transition: opacity 0.2s;
-        }
-
-        .project-links a:hover {
-            opacity: 0.7;
-        }
-
-        .embed-container {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #e5ddd5;
-            background: #0e1117;
-        }
-
-        .embed-container iframe {
-            width: 100%;
-            height: 650px;
-            border: none;
-            display: block;
-        }
-
-        .embed-toggle {
-            background: none;
-            border: 1px solid #a89080;
-            color: #5d4e42;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-bottom: 14px;
-        }
-
-        .embed-toggle:hover {
-            background: #efe9e3;
-        }
-
-        @media (max-width: 768px) {
-            .embed-container iframe {
-                height: 500px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects — Nishya Joylin Sathianesan">
+  <title>Projects | Nishya Joylin Sathianesan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-    <header>
-        <h1>Nishya Joylin Sathianesan</h1>
-        <p class="tagline">Strategic Leader in Data, Analytics, and Machine Learning</p>
-    </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="experience.html">Experience</a>
-        <a href="skills.html">Skills</a>
-        <a href="education.html">Education</a>
-        <a href="projects.html" class="active">Projects</a>
-        <a href="blog.html">Blog</a>
+  <header class="site-header">
+    <a class="site-logo" href="index.html">Nishya Joylin Sathianesan</a>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="experience.html">Experience</a>
+      <a class="nav-link" href="skills.html">Skills</a>
+      <a class="nav-link" href="education.html">Education</a>
+      <a class="nav-link active" href="projects.html">Projects</a>
+      <a class="nav-link" href="blog.html">Blog</a>
     </nav>
+  </header>
 
-    <main>
-        <div class="page-content">
-            <h2>Projects</h2>
-            <p style="color:#555; margin-bottom:30px; font-size:0.97rem;">
-                Tools and experiments I've built, mostly around data, experimentation, and decision-making.
-            </p>
+  <main class="page-wrap">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Tools and experiments built around data, experimentation, and decision-making</p>
 
-            <!-- ── PROJECT CARD TEMPLATE ─────────────────────────────────────────
-                 To add a new project, copy everything between START and END below,
-                 paste it above this comment, and fill in your details.
-
-            START
-            <div class="project-card">
-                <h3>Project Title</h3>
-                <p class="project-desc">
-                    1-2 sentence description of what it does and why it matters.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Tool</span>
-                    <span class="tag">Another Tag</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://your-app.streamlit.app" target="_blank">↗ Live app</a>
-                    <a href="https://github.com/you/repo" target="_blank">GitHub →</a>
-                </div>
-                <button class="embed-toggle" onclick="toggleEmbed(this)">Open app ↓</button>
-                <div class="embed-container" style="display:none;">
-                    <iframe src="https://your-app.streamlit.app?embed=true" loading="lazy"></iframe>
-                </div>
-            </div>
-            END
-            ── -->
-
-            <!-- A/B Testing Framework -->
-            <div class="project-card">
-                <h3>A/B Testing Framework</h3>
-                <p class="project-desc">
-                    A full experiment lifecycle tool, from "should I even test this?" through to
-                    statistical analysis and plain-English recommendations. Covers idea validation,
-                    sample size calculation, frequentist and Bayesian analysis, and an LLM verdict layer.
-                    Built because most A/B testing tools start after data is collected. This one starts before.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Streamlit</span>
-                    <span class="tag">Statistics</span>
-                    <span class="tag">Bayesian</span>
-                    <span class="tag">Experimentation</span>
-                    <span class="tag">LLM</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://ab-test-framework.streamlit.app" target="_blank">↗ Live app</a>
-                    <a href="https://github.com/nishyajoylin-s/ab-testing-framework" target="_blank">GitHub →</a>
-                </div>
-                <button class="embed-toggle" onclick="toggleEmbed(this)">Open app ↓</button>
-                <div class="embed-container" style="display:none;">
-                    <iframe src="https://ab-test-framework.streamlit.app?embed=true" loading="lazy"></iframe>
-                </div>
-            </div>
-
+    <!--
+      PROJECT TEMPLATE:
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:16px;">
+          <div style="font-size:16px; font-weight:700; color:var(--text-1);">Title</div>
+          <div class="project-links">
+            <a href="..." target="_blank" rel="noopener noreferrer" class="btn">↗ Live app</a>
+            <a href="..." target="_blank" rel="noopener noreferrer" class="btn">GitHub →</a>
+          </div>
         </div>
-    </main>
-
-    <footer>
-        <div class="linkedin-section">
-            <a href="https://www.linkedin.com/in/nishyajoylin/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="linkedin-button">
-                View LinkedIn Profile
-            </a>
+        <p style="font-size:14px; color:var(--text-2); line-height:1.75; margin-bottom:14px;">Description.</p>
+        <div class="tag-group">
+          <span class="tag">Tag</span>
         </div>
-        <p class="copyright">&copy; 2026 Nishya Joylin Sathianesan. All rights reserved.</p>
-    </footer>
+        <button class="btn" style="margin-top:14px;" onclick="toggleEmbed(this)">Open app ↓</button>
+        <div class="embed-wrap" style="display:none;">
+          <iframe src="...?embed=true" loading="lazy"></iframe>
+        </div>
+      </div>
+    -->
 
-    <script>
-        function toggleEmbed(btn) {
-            const container = btn.nextElementSibling;
-            const isHidden = container.style.display === 'none';
-            container.style.display = isHidden ? 'block' : 'none';
-            btn.textContent = isHidden ? 'Close app ↑' : 'Open app ↓';
-        }
-    </script>
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:16px; flex-wrap:wrap;">
+        <div style="font-size:16px; font-weight:700; color:var(--text-1);">A/B Testing Framework</div>
+        <div style="display:flex; gap:8px;">
+          <a href="https://ab-test-framework.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn">↗ Live app</a>
+          <a href="https://github.com/nishyajoylin-s/ab-testing-framework" target="_blank" rel="noopener noreferrer" class="btn">GitHub →</a>
+        </div>
+      </div>
+      <p style="font-size:14px; color:var(--text-2); line-height:1.75; margin-bottom:14px;">
+        A full experiment lifecycle tool, from &ldquo;should I even test this?&rdquo; through to statistical analysis and
+        plain-English recommendations. Covers idea validation, sample size calculation, frequentist and Bayesian analysis,
+        and an LLM verdict layer. Built because most A/B testing tools start after data is collected. This one starts before.
+      </p>
+      <div class="tag-group">
+        <span class="tag">Python</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Statistics</span>
+        <span class="tag">Bayesian</span>
+        <span class="tag">Experimentation</span>
+        <span class="tag">LLM</span>
+      </div>
+      <button class="btn" style="margin-top:16px;" onclick="toggleEmbed(this)">Open app ↓</button>
+      <div class="embed-wrap" style="display:none;">
+        <iframe src="https://ab-test-framework.streamlit.app?embed=true" loading="lazy"></iframe>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-copy">&copy; 2026 Nishya Joylin Sathianesan</p>
+    <a href="https://www.linkedin.com/in/nishyajoylin/" target="_blank" rel="noopener noreferrer" class="footer-linkedin">LinkedIn ↗</a>
+  </footer>
+
+  <script>
+    function toggleEmbed(btn) {
+      const wrap = btn.nextElementSibling;
+      const isHidden = wrap.style.display === 'none';
+      wrap.style.display = isHidden ? 'block' : 'none';
+      btn.textContent = isHidden ? 'Close app ↑' : 'Open app ↓';
+    }
+  </script>
 </body>
 </html>
