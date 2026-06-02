@@ -317,8 +317,46 @@ body {
 }
 
 .post-body p:last-child { margin-bottom: 0; }
-.post-body a { color: var(--accent); text-decoration: none; }
-.post-body a:hover { text-decoration: underline; }
+.post-body a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+.post-body a:hover { color: var(--text-1); }
+.post-steps a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+.post-steps {
+  margin: 4px 0 12px;
+  padding-left: 20px;
+}
+.post-steps li {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.post-steps li:last-child { margin-bottom: 0; }
+.post-steps strong { color: var(--text-1); }
+
+.post-h {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 22px 0 8px;
+  line-height: 1.4;
+}
+.post-h:first-of-type { margin-top: 18px; }
+
+.post-body code {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  background: rgba(129,130,99,0.1);
+  color: var(--text-1);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
 
 /* ── Tags ── */
 .tag-group {
