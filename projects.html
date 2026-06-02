@@ -50,6 +50,57 @@
 
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:16px; flex-wrap:wrap;">
+        <div style="font-size:16px; font-weight:700; color:var(--text-1);">Germany Live Power Grid &amp; Carbon Dashboard</div>
+        <div style="display:flex; gap:8px;">
+          <a href="https://germany-power-dashboard.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn">↗ Live app</a>
+          <a href="https://github.com/nishyajoylin-s/germany-power-dashboard" target="_blank" rel="noopener noreferrer" class="btn">GitHub →</a>
+        </div>
+      </div>
+      <p style="font-size:14px; color:var(--text-2); line-height:1.75; margin-bottom:14px;">
+        A single-screen, real-time view of the German power system: live generation mix, a computed grid carbon
+        intensity, day-ahead prices, and live green-power for all 16 federal states. Built from public open-data
+        feeds with no API keys and no database, as a power-operations command centre in Streamlit and Plotly.
+      </p>
+      <p style="font-size:12px; color:var(--text-3); text-transform:uppercase; letter-spacing:.07em; font-weight:600; margin:0 0 6px;">What it shows, and why it is useful</p>
+      <p style="font-size:14px; color:var(--text-2); line-height:1.75; margin-bottom:14px;">
+        At a glance: how much of Germany&rsquo;s electricity is renewable right now, how clean it is, what it costs,
+        and how the 16 states compare. The practical use is timing. A short forecast shows when power will be
+        greenest and cheapest in a given state, so you can pick the best window to charge an electric car or run
+        heavy appliances. For anyone following the energy transition, it is a live, honest read on how the grid is
+        tracking toward the 2030 renewable target, and a clear example of turning open data into something people
+        can act on.
+      </p>
+      <p style="font-size:12px; color:var(--text-3); text-transform:uppercase; letter-spacing:.07em; font-weight:600; margin:0 0 6px;">How it is built</p>
+      <ol class="post-steps" style="font-size:13.5px; margin-bottom:14px;">
+        <li><strong>Live, key-free feeds.</strong> Energy-Charts for the national mix and day-ahead price,
+          Corrently Gr&uuml;nstromIndex for per-postcode green power, Open-Meteo for solar and wind.</li>
+        <li><strong>Carbon computed, not fetched.</strong> No CO&#8322; endpoint exists, so grid carbon intensity
+          is derived from the live mix using IPCC lifecycle emission factors.</li>
+        <li><strong>All 16 federal states.</strong> The green-power feed is keyed by postcode, so each state is
+          sampled at its capital for even national coverage.</li>
+        <li><strong>Live solar field.</strong> One batched Open-Meteo call returns a ~300-point irradiance grid,
+          rendered as a heat layer behind the state bubbles.</li>
+        <li><strong>Command-centre layout.</strong> A single-screen, Z-pattern design: headline KPIs across the
+          top, the map as the anchor, the actionable &ldquo;when is power greenest&rdquo; forecast bottom-right.</li>
+        <li><strong>Simple to run.</strong> No database to manage; pushed to GitHub and served on Streamlit
+          Community Cloud from a single file.</li>
+      </ol>
+      <div class="tag-group">
+        <span class="tag">Python</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">Climate</span>
+        <span class="tag">Open Data</span>
+        <span class="tag">Carbon</span>
+      </div>
+      <button class="btn" style="margin-top:16px;" onclick="toggleEmbed(this)">Open app ↓</button>
+      <div class="embed-wrap" style="display:none;">
+        <iframe src="https://germany-power-dashboard.streamlit.app?embed=true" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:16px; flex-wrap:wrap;">
         <div style="font-size:16px; font-weight:700; color:var(--text-1);">A/B Testing Framework</div>
         <div style="display:flex; gap:8px;">
           <a href="https://ab-test-framework.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn">↗ Live app</a>
