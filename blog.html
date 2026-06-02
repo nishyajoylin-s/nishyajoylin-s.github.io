@@ -42,6 +42,217 @@
     -->
 
     <div class="card">
+      <p class="post-date">June 2026</p>
+      <div class="post-title">Don&rsquo;t build the dashboard. Prototype it first.</div>
+      <div class="post-body">
+        <p>
+          Dashboards aren&rsquo;t going extinct any time soon. But <em>how</em> we build them should keep up with
+          where the market and the tools are heading. I&rsquo;ve been building a bunch of them with Claude lately,
+          and this is just me sharing what I&rsquo;ve picked up.
+        </p>
+        <p>
+          Start with the thing that used to annoy me. Someone asks for a dashboard, an analyst disappears for a
+          week, and a polished &ldquo;first iteration&rdquo; comes back. Then the real feedback lands: wrong metric
+          on top, a chart nobody asked for, a filter that changes the whole story. Most of that week was spent
+          guessing. The expensive part was never the building. It was building before anyone had reacted to anything.
+        </p>
+        <p>
+          So now I treat the first dashboard as a wireframe I fully intend to throw away. The goal isn&rsquo;t a
+          deliverable, it&rsquo;s a reaction. And the fastest way to a reaction is to put something clickable in
+          front of people in an afternoon instead of a week. Claude Code plus a bit of data plus Streamlit gets you
+          there.
+        </p>
+        <p>
+          I learned this the lazy way. At the
+          <a href="https://www.meetup.com/smart-data-and-agentic-bi-munich/events/314493464/" target="_blank" rel="noopener noreferrer">Agentic Power BI MCP Hackathon</a>
+          in Munich the session was about driving Power BI with an MCP server and Claude, except I am on a Mac and
+          cannot run Power BI Desktop at all. Rather than sit it out, I had Claude Code build the Python-native
+          equivalent: a sample fitness dataset turned into a seven-chart Streamlit dashboard, filters and all, in
+          about an hour. The constraint became the point. You do not need the heavy tool to validate the idea.
+        </p>
+
+        <h3 class="post-h">Who this is for</h3>
+        <p>
+          This is not just a trick for data engineers. The people it helps most often cannot code at all:
+        </p>
+        <ol class="post-steps">
+          <li><strong>Leaders and managers</strong> who do not have time to build a big dashboard but need to align
+            stakeholders on what to build. A clickable prototype turns &ldquo;I think we need this&rdquo; into
+            &ldquo;here it is, does it actually help your team?&rdquo; before engineering spends a sprint.</li>
+          <li><strong>Anyone living in Excel.</strong> If you build dashboards by hand in spreadsheets, this is an
+            easier, interactive option: a live, filterable app without learning a heavy BI tool.</li>
+          <li><strong>Data teams and analysts</strong> who want to move and iterate fast, and to settle the metric
+            and the layout on a throwaway prototype before wiring the expensive production pipeline.</li>
+          <li><strong>Product managers and founders</strong> validating an idea or a pitch with something tangible
+            people can click, instead of another slide.</li>
+          <li><strong>Consultants and agencies</strong> who want to show a client what is possible in the very
+            first meeting, not the third.</li>
+        </ol>
+        <p>
+          The common thread: the prototype is how you have the conversation. It shows the impact, it shows how the
+          thing would actually be used, and it does both while changes are still cheap.
+        </p>
+
+        <h3 class="post-h">How I actually built it with Claude, step by step</h3>
+        <p>
+          The fitness dashboard was a quick prototype. The same way of working scales all the way to a real,
+          genuinely-live product. Rather than list everything my German power-grid dashboard ended up with, here is
+          how I built it <em>with Claude</em>, because the method is the part that carries over to your own project.
+          You can
+          <a href="https://germany-power-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer">try it live here</a>
+          and read
+          <a href="https://github.com/nishyajoylin-s/germany-power-dashboard" target="_blank" rel="noopener noreferrer">the code on GitHub</a>.
+        </p>
+        <p>
+          Quick context if you have not used it.
+          <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a>
+          is Claude running in your terminal: it can read your files, run commands, and write the code while you talk
+          to it in plain English. <strong>Plan mode</strong> is a switch (you toggle it on, and it shows in the
+          prompt) that tells Claude to research and lay out an approach first, then wait for your okay, before it
+          changes a single file. It is the difference between &ldquo;go build this&rdquo; and &ldquo;tell me how you
+          would build this, then go.&rdquo; Most of what follows is really just a conversation in that setup.
+        </p>
+
+        <h3 class="post-h">Step 1: Plan first, don&rsquo;t prompt-and-pray</h3>
+        <p>
+          Before any code I put Claude in plan mode and gave it the goal plus the hard constraints: live data only,
+          no API keys, no database, the whole thing on one screen. Plan mode makes Claude research and propose an
+          approach <em>before</em> writing code you would only throw away.
+        </p>
+        <p>
+          The plan it came back with was simple, and that is the point: pull from a handful of open, live feeds,
+          render everything in one Streamlit page with no database, compute anything the data did not already
+          provide, and deploy to a free host. I tweaked a couple of points, said go, and the rest was mostly the
+          steps below. Seeing the plan written out first is what stops you wasting a day on the wrong shape.
+        </p>
+
+        <h3 class="post-h">Step 2: Let Claude do the discovery</h3>
+        <p>
+          I did not go hunting for data sources myself. I asked Claude to find live, free feeds for the topic and to
+          actually test them. It called each one, checked what came back without a key, and reported which were real
+          and which were dead ends. The useful prompt here is &ldquo;find and verify&rdquo;, not &ldquo;use this
+          exact endpoint&rdquo;.
+        </p>
+
+        <h3 class="post-h">Step 3: Prompt the outcome, not the implementation</h3>
+        <p>
+          I described what I wanted to see in plain English: a gauge for the grid&rsquo;s carbon intensity, a map of
+          regions coloured by how green their power is, a price chart. Claude picks the libraries, writes the app,
+          and wires the data in. You stay in the language of the problem and let it handle the code underneath.
+        </p>
+
+        <h3 class="post-h">Step 4: Iterate one sentence at a time</h3>
+        <p>
+          Every change after that was a single sentence. &ldquo;Use a dark command-centre theme.&rdquo; &ldquo;Make
+          the map the centrepiece.&rdquo; &ldquo;Reorder the panels so it reads in a Z, not top to bottom.&rdquo;
+          Claude reshapes it while you watch, so you steer by reacting to what is on the screen instead of trying to
+          specify everything up front.
+        </p>
+
+        <h3 class="post-h">Step 5: Hand Claude the hard and fiddly parts</h3>
+        <p>
+          When something was missing or broken, I described the symptom and let Claude solve it. There was no
+          ready-made carbon number in the data, so it worked one out from the energy mix. A chart threw a cryptic
+          error and a clock showed the wrong hour: I pasted exactly what I saw and Claude diagnosed and fixed each
+          one. You do not need to be the expert on every corner. You need to describe the problem clearly.
+        </p>
+
+        <h3 class="post-h">Step 6: Keep it honest and documented</h3>
+        <p>
+          I asked Claude to be upfront about limitations on the page itself, so where one feed lags behind, the page
+          says so. I also had it keep a short decisions log explaining why each choice was made. That keeps the
+          project legible later and keeps you from quietly over-claiming.
+        </p>
+
+        <h3 class="post-h">Step 7: Verify, then ship</h3>
+        <p>
+          Before deploying, Claude re-checks that the live feeds still return what we expect and I eyeball the
+          result. Then it is a push to GitHub and pointing Streamlit Community Cloud at one file. The whole loop,
+          from plan to a public link, is mostly conversation plus a couple of commands, the same path my
+          <a href="https://ab-test-framework.streamlit.app/" target="_blank" rel="noopener noreferrer">A/B testing tool</a>
+          took to go live.
+        </p>
+
+        <p>
+          None of this needed me to be a Plotly or API expert. The skill that mattered was working <em>with</em>
+          Claude: plan first, describe outcomes, react in sentences, and let it handle the corners. That carries over
+          to almost any small data app you want to stand up fast.
+        </p>
+
+        <h3 class="post-h">Taking it to a company</h3>
+        <p>
+          At work the loop is the same, but three things change: where the sample data comes from, what you build
+          the real dashboard in, and who drives that build. Each one has a right way and a tedious way.
+        </p>
+
+        <h3 class="post-h">Make the sample data the right way</h3>
+        <p>
+          On a company laptop you have real data, and the obvious move is to hand-build a fake version of it for
+          the prototype. That is the tedious, error-prone path, and it usually produces data that behaves nothing
+          like the real thing. Invert it. Keep the real data where it lives and extract only its <em>shape</em>:
+          the schema, the column types, the distinct values, and a quick statistical summary. Hand that shape to
+          Claude Code and let it generate synthetic rows that match.
+        </p>
+        <p>
+          Because only the schema and a few aggregate statistics ever leave the warehouse, no real records move,
+          and the result is a reproducible script rather than a file you typed by hand. When the data is sensitive
+          or regulated, reach for purpose-built tools: <strong>Faker</strong> for realistic fake identities,
+          <strong>SDV</strong> (Synthetic Data Vault) to learn and reproduce the real correlations, or commercial
+          platforms like Gretel, Tonic, or MOSTLY AI that anonymise while preserving statistical fidelity. One
+          MCP server can pull the schema and the summary; Claude does the rest.
+        </p>
+
+        <h3 class="post-h">Pick a company-grade surface, not just Streamlit</h3>
+        <p>
+          Streamlit is ideal for the throwaway prototype. It is not always the right home for the production
+          dashboard. The market already offers company-grade options that plug into existing infrastructure, and
+          you almost certainly own one:
+        </p>
+        <ol class="post-steps">
+          <li><strong>The BI tool you already pay for.</strong> Power BI, Tableau, or Looker connect to the
+            warehouse and already solve sign-on, refresh, governance, and sharing.</li>
+          <li><strong>Open-source, self-hosted.</strong> Metabase or Apache Superset, if you want a dashboard
+            layer you host yourself with no per-seat cost.</li>
+          <li><strong>Heavier Python frameworks.</strong> Dash with Dash Enterprise, or Streamlit in Snowflake,
+            when you want the app to live next to the data inside your own cloud.</li>
+          <li><strong>Build something custom</strong> only when the dashboard is a product in its own right. For an
+            internal decision tool that is usually overkill.</li>
+        </ol>
+        <p>
+          Whichever you pick, the production version differs from the prototype in three ways the prototype only
+          unlocks: it reads the warehouse or API live instead of a sample file, it is hosted behind single sign-on
+          rather than on a laptop, and access is governed with row-level security and an audit trail.
+        </p>
+
+        <h3 class="post-h">Let Claude build in your BI tool too</h3>
+        <p>
+          The real surprise from the Munich hackathon was that Claude does not stop at Streamlit. Through an MCP
+          server it can work directly inside Power BI: building the semantic model, writing the DAX measures, and
+          scaffolding the report. It accelerates a Power BI developer rather than replacing one, but it means the
+          prototype and the production version can both be Claude-driven. You think fast in Streamlit with sample
+          data, and once the idea gets a yes, you point Claude at Power BI through MCP and let it build the
+          governed version in the tool your company already runs.
+        </p>
+        <p>
+          That is the whole arc. Claude is the constant. The surface changes: Streamlit to think, your BI stack to
+          ship. The prototype was never the deliverable. The validated decision was, and now you have a clean path
+          to build it for real.
+        </p>
+        <p>
+          One practical note: I did all of this on a <strong>Claude Max plan</strong>. The constant back-and-forth,
+          dozens of small prompts and fixes across a long session, never hit a usage wall, and that headroom is half
+          of why iterating in sentences actually works.
+        </p>
+      </div>
+      <div class="tag-group">
+        <span class="tag">Prototyping</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Data</span>
+      </div>
+    </div>
+
+    <div class="card">
       <p class="post-date">April 2026</p>
       <div class="post-title">Why most A/B tests fail before the data is collected</div>
       <div class="post-body">
