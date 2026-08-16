@@ -55,6 +55,128 @@
       </div>
     -->
 
+    <div class="card" id="temple-metro">
+      <p class="post-date">August 2026</p>
+      <div class="post-title">Tell the model what makes it different, not what it is.</div>
+      <div class="post-body">
+        <p>
+          I built a subway map of 32 Tamil Nadu temples. Every station is a temple, the lines are real
+          pilgrimage routes, and tapping a station raises that temple&rsquo;s kopuram with its story in Tamil
+          and English. You can
+          <a href="https://nishyajoylin-s.github.io/Tamil-Nadu-Temple-Metro/" target="_blank" rel="noopener noreferrer">open the map here</a>.
+        </p>
+        <p>
+          The idea came from
+          <a href="https://marinabudarina.github.io/chimes/#home" target="_blank" rel="noopener noreferrer">Marina Budarina&rsquo;s Chimes</a>,
+          where architecture floats over text that cascades as you scroll. I wanted that with gopurams, because
+          a gopuram in person does exactly this. It rises over everything and the stories pool at its feet.
+        </p>
+
+        <h3 class="post-h">The first batch was 32 versions of the same tower</h3>
+        <p>
+          Ask for &ldquo;a South Indian temple gopuram, densely carved, front facing&rdquo; thirty two times and
+          you get one gopuram thirty two times. Naming the temple barely helps. The model does not know
+          Ekambareswarar from Arunachaleswarar by name, so it hands back its average of all of them.
+        </p>
+
+        <h3 class="post-h">The fix was not a better prompt. It was doing the research myself.</h3>
+        <p>
+          I went and found reference photographs for all 32 temples, one at a time. That is the unglamorous
+          middle of this project and it is the only reason it worked. Once I had the photos I could see what
+          actually separates these towers, and I gave them to Claude as input so the prompts were written
+          against something real instead of a guess.
+        </p>
+        <p>
+          A sorting rule fell out of that. All 32 belong to one of seven surface families: bare unpainted
+          granite, whitewashed white, vivid saturated multicolor, soft pastel multicolor, gold plated, aged and
+          muted, and Kanyakumari, which has no tower at all.
+        </p>
+        <p>
+          Then every prompt got a line marked KEY LOOK, written as a contrast against its own family rather
+          than a description on its own. Ekambareswarar is not &ldquo;a pale tower&rdquo;. It is the warmest toned
+          of the monochrome group, honey tan rather than white or grey, the tallest and steepest, flat topped
+          with no curved sala roof. Arunachaleswarar sits in the same family, so its line reads cooler and
+          greyer than Ekambareswarar, barrel vault crown, a row of dark maroon kalasha pots.
+        </p>
+        <p>
+          Written that way they came back different. The comparison does the work, and the comparison only
+          existed because I had the photographs in front of me.
+        </p>
+        <p>
+          I tagged every temple by confidence as I went. Verified where I had a photograph, researched where I
+          could confirm tier count and era from sources, inferred where I knew the structure but was guessing at
+          colour. The inferred ones are the ones to spot check. Being honest about which was which kept me from
+          shipping confident nonsense.
+        </p>
+
+        <h3 class="post-h">Small things that mattered more than expected</h3>
+        <p>
+          Never ask for a transparent background. The model paints a fake checkerboard. Generate on flat pure
+          white, no shadow, no gradient, and cut it out afterwards.
+        </p>
+        <p>
+          Say the doorway is a dark shadowed recess. Left alone the entrance renders as a bright white
+          rectangle, which turns into a hole the moment you remove the background.
+        </p>
+        <p>
+          Spell out framing every time. Complete tower, about 80% of the height, empty margin above the crown
+          and below the plinth. Otherwise it crops the base, and a gopuram with its feet cut off looks wrong
+          immediately.
+        </p>
+        <p>
+          Keep the lighting clause identical across all 32. Soft directional light from upper left. That one
+          repeated sentence is what makes them read as a set rather than a collage.
+        </p>
+
+        <h3 class="post-h">Two sets, not one</h3>
+        <p>
+          The gallery needed complete towers in portrait. The map panels needed the crown and top six tiers
+          zoomed to fill a landscape frame. Same descriptions, different framing block, generated separately.
+          Cropping one into the other never worked.
+        </p>
+
+        <h3 class="post-h">The map was the harder half</h3>
+        <p>
+          The towers were slow but each one was solvable on its own. The map kept looking wrong in ways I could
+          see instantly and could not name.
+        </p>
+        <p>
+          Four things were wrong. The lines were drawn at different weights, so the network read as accidental
+          rather than designed. Lines ran outside Tamil Nadu altogether, and a schematic that floats off the
+          state stops being about the state. Stations sat in the wrong places, temples I know are in the delta
+          turning up nowhere near it. And pilgrimage mode, which travels a line and stops at each temple in
+          turn, did not follow the order it should.
+        </p>
+        <p>
+          What sorted it was giving up on anything automatic. Every temple got a fixed coordinate pinned in the
+          same space as the real state outline, so the schematic and the geography share one grid and no station
+          can drift off the map. Each line holds an explicit ordered list of its stations, which is what
+          pilgrimage mode walks. And where several lines pass through the same temples, each line carries a
+          small parallel offset. Madurai, Kumbakonam and Chidambaram sit on three or four lines each, and
+          without those offsets they were one thick smear.
+        </p>
+
+        <h3 class="post-h">Tools</h3>
+        <p>
+          ChatGPT and Gemini, both free tier. ChatGPT gave me the renders I kept. Claude wrote the prompts from
+          my reference photographs, and did the design and the build.
+        </p>
+        <p>
+          Both prompt sets are here if you want to take them apart:
+        </p>
+        <ul>
+          <li><a href="assets/temple-prompts-full-towers.md" download>Full tower set</a>, complete gopurams on white for cutting out to transparency.</li>
+          <li><a href="assets/temple-prompts-map-panels.md" download>Map panel set</a>, crown and top tiers zoomed to fill the frame.</li>
+        </ul>
+      </div>
+      <div class="tag-group">
+        <span class="tag">Prompting</span>
+        <span class="tag">Design</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Tamil Nadu</span>
+      </div>
+    </div>
+
     <div class="card" id="prototype-first">
       <p class="post-date">June 2026</p>
       <div class="post-title">Do not build the dashboard. Prototype it first.</div>
