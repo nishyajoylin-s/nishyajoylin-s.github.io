@@ -164,6 +164,17 @@ button:focus-visible {
   transform-origin: 0 0;
   border: 0; display: block; background: var(--card);
 }
+/* Sits over the empty iframe until the reader asks for the app. Hidden without
+   JS, where the <noscript> iframe loads straight away and nothing needs covering. */
+.embed-cover {
+  display: none;
+  position: absolute; inset: 0; z-index: 1;
+  flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  padding: 24px; text-align: center; background: var(--card);
+}
+html.js .embed-cover { display: flex; }
+.embed-cover p { max-width: 44ch; margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.embed-cover .btn { cursor: pointer; background: transparent; font: inherit; font-weight: 600; font-size: 15px; }
 
 /* Scroll reveal. Gated on html.js so the page is fully readable without JS
    instead of a blank scroll of opacity:0 sections. */
